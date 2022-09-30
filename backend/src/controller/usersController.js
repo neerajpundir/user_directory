@@ -46,11 +46,11 @@ module.exports.addUser = async (_req, _res, _next) => {
  */
 module.exports.getUsers = async (_req, _res, _next) => {
   try {
-    const { name } = _req.body;
-    if (name) {
-      var letter = String.fromCharCode(name);
+    const { word_no } = _req.body;
+    if (word_no) {
+      var letter = String.fromCharCode(word_no);
       var users = await Users.find(
-        { name: { $regex: "^" + letter.toUpperCase() + ".*" } },
+        { fullname: { $regex: "^" + letter.toUpperCase() + ".*" } },
         { password: 0 }
       );
     } else {
